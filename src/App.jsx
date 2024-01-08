@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import useContentful from "./useContentful";
 import SearchBar from "./components/SearchBar";
 import Recent from "./components/Recent";
+import Diet from "./components/Diet";
 import "./App.css";
 
 function App() {
@@ -40,8 +41,7 @@ function App() {
         setSearchInput={setSearchInput}
       />
       <Recent recipes={recipes} loading={loading} />
-      {/* <Course recipes={recipes} loading={loading} />
-      <Diet recipes={recipes} loading={loading} /> */}
+      <Diet recipes={recipes} loading={loading} /> 
     </div>
   );
 }
