@@ -1,23 +1,38 @@
 import React, { useState, useEffect } from "react";
 import useContentful from "./useContentful";
+import DisplayRecipes from "./components/DisplayRecipes";
+import SearchBar from "./components/SearchBar";
 
 function App() {
   const { getRecipes } = useContentful();
 
   const [recipes, setRecipes] = useState([]);
+  const [search, setSearch] = useState("");
+  const [searchInput, setSearchInput] = useState("");
 
   useEffect(() => {
-    getRecipes().then((recipes) => setRecipes(recipes));
-  }, []);
+    getRecipes().then((recipes) => {
+      const filteredRecipes = recipes.filter((recipe) =>
+        recipe.fields.title.toLowerCase().includes(search.toLowerCase())
+      );
+      setRecipes(filteredRecipes);
+    });
+  }, [search]);
+
+  const handleSubmit = (e, searchInput) => {
+    e.preventDefault();
+    setSearch(searchInput);
+    setSearchInput("");
+  };
 
   return (
     <>
-      {recipes.map((recipe) => (
-        <div key={recipe.sys.id}>
-          <h2>{recipe.fields.title}</h2>
-          <p>{recipe.fields.description}</p>
-        </div>
-      ))}
+      <SearchBar
+        handleSubmit={handleSubmit}
+        searchInput={searchInput}
+        setSearchInput={setSearchInput}
+      />
+      {recipes && <DisplayRecipes recipes={recipes} />}
     </>
   );
 }
