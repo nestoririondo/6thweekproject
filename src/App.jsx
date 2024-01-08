@@ -40,7 +40,7 @@ function App() {
         searchInput={searchInput}
         setSearchInput={setSearchInput}
       />
-      <Recent recipes={recipes} loading={loading} />
+      <Recent recipes={recipes.slice(0,6)} loading={loading} />
       <Diet recipes={recipes} loading={loading} /> 
     </div>
   );

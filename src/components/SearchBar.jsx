@@ -3,7 +3,7 @@ const SearchBar = ({ handleSubmit, searchInput, setSearchInput }) => {
     <div className="outer-container">
       <div className="inner-container">
         <div className="logo">
-          <h1>Foodie Network</h1>
+          <a href="/"><h1>Foodie Network</h1></a>
         </div>
         <div className="search-bar">
           <form onSubmit={(e) => handleSubmit(e, searchInput)}>

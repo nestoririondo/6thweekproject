@@ -5,6 +5,7 @@ const Recent = ({ recipes }) => {
       <div className="recent">
         <div className="left">
           <h2>Recent recipes</h2>
+          <button className="view-all">View all</button>
         </div>
         <div className="right">
           {recipes.map((recipe) => (

@@ -5,8 +5,12 @@
 }
 
 body {
-  font-family: "gilroy", Helvetica, Arial, sans-serif;
-  background-color: #f5f5f5;
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: rgb(245, 245, 245);
+}
+a {
+    text-decoration: none;
+    color: inherit;
 }
 
 .container {
@@ -14,8 +18,8 @@ body {
 
 .outer-container {
   padding: 4rem;
-  background-color: #3dcf8b;
-  background-image: url(./assets/stirring.svg), url(./assets/meal-2.svg);
+  background-image: url(./assets/stirring.svg), url(./assets/meal-2.svg),
+    linear-gradient(to right, rgb(164, 54, 54), rgb(255, 72, 72));
   background-repeat: no-repeat, no-repeat;
   background-position: left bottom, right top;
 
@@ -23,15 +27,17 @@ body {
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
+    color: #fff;
     .search-bar {
       form {
         margin-top: 4rem;
         display: flex;
         align-items: flex-end;
+        flex-wrap: wrap;
         gap: 2rem;
         .form-group1 {
           display: flex;
-          width: 30%;
+          flex: 1;
           flex-direction: column;
           label {
             margin-bottom: 0.5rem;
@@ -46,7 +52,7 @@ body {
         }
         .form-group2 {
           display: flex;
-          flex: 1;
+          flex: 2;
           flex-direction: column;
           label {
             margin-bottom: 0.5rem;
@@ -105,7 +111,8 @@ body {
 .diet-outer {
   padding: 4rem;
 }
-.recent, .diet {
+.recent,
+.diet {
   max-width: 1200px;
   width: 100%;
   margin: 4rem auto;
@@ -115,12 +122,30 @@ body {
     min-width: 30%;
     margin-bottom: 2rem;
     margin-right: 2rem;
+    white-space: nowrap;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    .view-all {
+      width: 10rem;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      font-size: 1rem;
+      cursor: pointer;
+      &:hover {
+        background-color: #eee;
+      }
+      &:active {
+        background-color: #ddd;
+      }
+    }
   }
   .right {
-    min-width: 400px;
-    flex: 1;
+    flex: 1 0 60%;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     grid-gap: 2rem;
     .recipe-card {
       overflow: hidden;
@@ -145,5 +170,5 @@ body {
 }
 
 .diet-outer {
-    background-color: #ffffff;
+  background-color: #ffffff;
 }
