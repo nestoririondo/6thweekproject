@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import useContentful from "./useContentful";
-import DisplayRecipes from "./components/DisplayRecipes";
 import SearchBar from "./components/SearchBar";
+import Recent from "./components/Recent";
 import "./App.css";
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
   const [searchInput, setSearchInput] = useState("");
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -23,7 +23,7 @@ function App() {
     });
     return () => {
       setRecipes([]);
-    }
+    };
   }, [search]);
 
   const handleSubmit = (e, searchInput) => {
@@ -33,16 +33,16 @@ function App() {
   };
 
   return (
-    <>
+    <div className="container">
       <SearchBar
         handleSubmit={handleSubmit}
         searchInput={searchInput}
         setSearchInput={setSearchInput}
       />
-      {recipes && <DisplayRecipes recipes={recipes} />}
-      {loading && <p>Loading...</p>}
-      {!loading && recipes.length === 0 && <p>No recipes found</p>}
-    </>
+      <Recent recipes={recipes} loading={loading} />
+      {/* <Course recipes={recipes} loading={loading} />
+      <Diet recipes={recipes} loading={loading} /> */}
+    </div>
   );
 }
 
