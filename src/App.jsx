@@ -17,6 +17,9 @@ function App() {
       );
       setRecipes(filteredRecipes);
     });
+    return () => {
+      setRecipes([]);
+    }
   }, [search]);
 
   const handleSubmit = (e, searchInput) => {
@@ -33,6 +36,7 @@ function App() {
         setSearchInput={setSearchInput}
       />
       {recipes && <DisplayRecipes recipes={recipes} />}
+      {recipes.length === 0 && <p>No recipes found</p>}
     </>
   );
 }
