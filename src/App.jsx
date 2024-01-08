@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import useContentful from "./useContentful";
 import DisplayRecipes from "./components/DisplayRecipes";
 import SearchBar from "./components/SearchBar";
+import "./App.css";
 
 function App() {
   const { getRecipes } = useContentful();
@@ -9,13 +10,16 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
   const [searchInput, setSearchInput] = useState("");
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    setLoading(true);
     getRecipes().then((recipes) => {
       const filteredRecipes = recipes.filter((recipe) =>
         recipe.fields.title.toLowerCase().includes(search.toLowerCase())
       );
       setRecipes(filteredRecipes);
+      setLoading(false);
     });
     return () => {
       setRecipes([]);
@@ -36,7 +40,8 @@ function App() {
         setSearchInput={setSearchInput}
       />
       {recipes && <DisplayRecipes recipes={recipes} />}
-      {recipes.length === 0 && <p>No recipes found</p>}
+      {loading && <p>Loading...</p>}
+      {!loading && recipes.length === 0 && <p>No recipes found</p>}
     </>
   );
 }
