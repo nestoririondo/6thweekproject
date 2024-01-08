@@ -14,7 +14,7 @@ body {
 
 .outer-container {
   padding: 4rem;
-  background-color: #33c882;
+  background-color: #3dcf8b;
   background-image: url(./assets/stirring.svg), url(./assets/meal-2.svg);
   background-repeat: no-repeat, no-repeat;
   background-position: left bottom, right top;
@@ -100,4 +100,50 @@ body {
       object-fit: cover;
     }
   }
+}
+.recent-outer,
+.diet-outer {
+  padding: 4rem;
+}
+.recent, .diet {
+  max-width: 1200px;
+  width: 100%;
+  margin: 4rem auto;
+  display: flex;
+  flex-wrap: wrap;
+  .left {
+    min-width: 30%;
+    margin-bottom: 2rem;
+    margin-right: 2rem;
+  }
+  .right {
+    min-width: 400px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-gap: 2rem;
+    .recipe-card {
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      font-size: 0.6rem;
+      img {
+        border-radius: 5px;
+        width: 100%;
+        object-fit: cover;
+        aspect-ratio: 4/3;
+      }
+      &:hover {
+        cursor: pointer;
+        transform: scale(1.02);
+      }
+    }
+  }
+}
+
+.diet-outer {
+    background-color: #ffffff;
 }
