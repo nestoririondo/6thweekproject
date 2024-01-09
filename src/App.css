@@ -226,3 +226,25 @@ a {
 .diet-outer {
   background-color: #ffffff;
 }
+
+footer {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 4rem;
+  .go-up-btn {
+
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    &:hover {
+      background-color: #eee;
+    }
+    &:active {
+      background-color: #ddd;
+    }
+  }
+}
