@@ -16,10 +16,7 @@ function App() {
 
   useEffect(() => {
     getRecipes().then((recipes) => {
-      const filteredRecipes = recipes.filter((recipe) =>
-        recipe.fields.title.toLowerCase().includes(search.toLowerCase())
-      );
-      setRecipes(filteredRecipes);
+      setRecipes(recipes);
     });
     return () => {
       setRecipes([]);
@@ -30,6 +27,7 @@ function App() {
     e.preventDefault();
     setSearch(searchInput);
     setSearchInput("");
+    setView("search");
   };
 
   return (
@@ -51,9 +49,11 @@ function App() {
                 </>
               );
             case "search":
-              return <SearchResults recipes={recipes} />;
+              return <SearchResults recipes={recipes} search={search} />;
             case "all":
-              return <AllRecipes recipes={recipes} setView={setView}/>;
+              return <AllRecipes recipes={recipes} setView={setView} />;
+            case "recipe-detail":
+              return <RecipeDetailView />;
             default:
               return null;
           }

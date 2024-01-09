@@ -1,3 +1,4 @@
+
 const SearchBar = ({ handleSubmit, searchInput, setSearchInput, setView }) => {
   return (
     <div className="outer-container">
@@ -5,12 +6,14 @@ const SearchBar = ({ handleSubmit, searchInput, setSearchInput, setView }) => {
         <div className="logo">
           <a onClick={()=> setView("frontpage")}><h1>Foodie Network</h1></a>
         </div>
+
         <div className="search-bar">
           <form onSubmit={(e) => handleSubmit(e, searchInput)}>
             <div className="form-group1">
               <label htmlFor="course">Course </label>
               <select name="course">
-                <option value="appetizer">Appetizer</option>
+                <option value="all">All</option>
+                <option value="appetizer">Starter</option>
                 <option value="main course">Main Course</option>
                 <option value="dessert">Dessert</option>
               </select>
@@ -19,7 +22,7 @@ const SearchBar = ({ handleSubmit, searchInput, setSearchInput, setView }) => {
               <label htmlFor="recipes">Recipes </label>
               <input
                 type="text"
-                placeholder="Search..."
+                placeholder="Search by name, ingredient, diet..."
                 value={searchInput}
                 onChange={(e) => setSearchInput(e.target.value)}
               />

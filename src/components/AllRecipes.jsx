@@ -1,14 +1,13 @@
 const AllRecipes = ({ recipes, setView }) => {
+  const backBtn = () => {
+    setView("frontpage");
+  };
+
   return (
     <>
       <div className="all-recipes">
         <div className="title">
-          <button
-            className="back"
-            onClick={() => {
-              setView("frontpage");
-            }}
-          >
+          <button className="back" onClick={backBtn}>
             Back
           </button>
           <h2>All latest recipes</h2>
