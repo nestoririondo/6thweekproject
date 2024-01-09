@@ -4,6 +4,7 @@ import SearchBar from "./components/SearchBar";
 import Recent from "./components/Recent";
 import AllRecipes from "./components/AllRecipes";
 import Diet from "./components/Diet";
+import RecipeDetail from "./components/RecipeDetail";
 import "./App.css";
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
   const [search, setSearch] = useState("");
   const [searchInput, setSearchInput] = useState("");
   const [view, setView] = useState("frontpage");
+  const [selectedRecipe, setSelectedRecipe] = useState("");
 
   useEffect(() => {
     getRecipes().then((recipes) => {
@@ -44,16 +46,16 @@ function App() {
             case "frontpage":
               return (
                 <>
-                  <Recent recipes={recipes.slice(0, 6)} setView={setView} />
+                  <Recent recipes={recipes.slice(0, 6)} setView={setView} setSelectedRecipe={setSelectedRecipe}/>
                   <Diet />
                 </>
               );
             case "search":
               return <SearchResults recipes={recipes} search={search} />;
             case "all":
-              return <AllRecipes recipes={recipes} setView={setView} />;
+              return <AllRecipes recipes={recipes} setView={setView} setSelectedRecipe={setSelectedRecipe} />;
             case "recipe-detail":
-              return <RecipeDetailView />;
+              return <RecipeDetail selectedRecipe={selectedRecipe} setView={setView}/>;
             default:
               return null;
           }

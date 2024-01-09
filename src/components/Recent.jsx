@@ -1,8 +1,9 @@
-const Recent = ({ recipes, setView }) => {
+const Recent = ({ recipes, setView, setSelectedRecipe }) => {
   const handleViewAll = () => {
     setView("all");
   };
-  const handleCardClick = (key) => {
+  const handleCardClick = (recipe) => {
+    setSelectedRecipe(recipe);
     setView("recipe-detail");
   }
 
@@ -17,7 +18,7 @@ const Recent = ({ recipes, setView }) => {
         </div>
         <div className="right">
           {recipes.map((recipe) => (
-            <div key={recipe.sys.id} className="recipe-card" onClick={()=>handleCardClick(recipe.sys.id)}>
+            <div key={recipe.sys.id} className="recipe-card" onClick={()=>handleCardClick(recipe)}>
               <img src={recipe.fields.images[0].fields.file.url} alt="" />
               <h3>{recipe.fields.title}</h3>
             </div>
