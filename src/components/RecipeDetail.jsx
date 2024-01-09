@@ -1,8 +1,11 @@
+import { useNavigate } from "react-router-dom";
 import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import "./RecipeDetail.css";
 
-const RecipeDetail = ({ selectedRecipe, setView }) => {
+const RecipeDetail = ({ selectedRecipe }) => {
+  const navigate = useNavigate();
+
   const options = {
     renderMark: {
       [MARKS.BOLD]: (text) => <strong>{text}</strong>,
@@ -13,15 +16,14 @@ const RecipeDetail = ({ selectedRecipe, setView }) => {
     },
   };
 
+  const handleBackClick = () => {
+    navigate(-1);
+  };
+
   return (
     <div className="recipe-detail">
       <div className="title">
-        <button
-          className="back"
-          onClick={() => {
-            setView("frontpage");
-          }}
-        >
+        <button className="back" onClick={handleBackClick}>
           Back
         </button>
         <h2 className="recipe-title">{selectedRecipe.fields.title}</h2>
