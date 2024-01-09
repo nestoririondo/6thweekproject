@@ -1,10 +1,15 @@
+import { useNavigate } from "react-router-dom";
 
-const SearchBar = ({ handleSubmit, searchInput, setSearchInput, setView }) => {
+const SearchBar = ({ handleSubmit, searchInput, setSearchInput }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="outer-container">
       <div className="inner-container">
         <div className="logo">
-          <a onClick={()=> setView("frontpage")}><h1>Foodie Network</h1></a>
+          <a onClick={() => navigate("/")}>
+            <h1>Foodie Network</h1>
+          </a>
         </div>
 
         <div className="search-bar">

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import useContentful from "./useContentful";
 import SearchBar from "./components/SearchBar";
 import Recent from "./components/Recent";
@@ -13,7 +14,6 @@ function App() {
   const [recipes, setRecipes] = useState([]);
   const [search, setSearch] = useState("");
   const [searchInput, setSearchInput] = useState("");
-  const [view, setView] = useState("frontpage");
   const [selectedRecipe, setSelectedRecipe] = useState("");
 
   useEffect(() => {
@@ -29,40 +29,55 @@ function App() {
     e.preventDefault();
     setSearch(searchInput);
     setSearchInput("");
-    setView("search");
   };
 
   return (
-    <div className="container">
-      <SearchBar
-        handleSubmit={handleSubmit}
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-        setView={setView}
-      />
-      <div className="content">
-        {(() => {
-          switch (view) {
-            case "frontpage":
-              return (
+    <Router>
+      <div className="container">
+        <SearchBar
+          handleSubmit={handleSubmit}
+          searchInput={searchInput}
+          setSearchInput={setSearchInput}
+        />
+        <div className="content">
+          <Routes>
+            <Route
+              path="/"
+              element={
                 <>
-                  <Recent recipes={recipes.slice(0, 6)} setView={setView} setSelectedRecipe={setSelectedRecipe}/>
+                  <Recent
+                    recipes={recipes.slice(0, 6)}
+                    setSelectedRecipe={setSelectedRecipe}
+                  />
                   <Diet />
                 </>
-              );
-            case "search":
-              return <SearchResults recipes={recipes} search={search} />;
-            case "all":
-              return <AllRecipes recipes={recipes} setView={setView} setSelectedRecipe={setSelectedRecipe} />;
-            case "recipe-detail":
-              return <RecipeDetail selectedRecipe={selectedRecipe} setView={setView}/>;
-            default:
-              return null;
-          }
-        })()}
+              }
+            />
+            {/* <Route
+              path="/search"
+              element={<SearchResults recipes={recipes} search={search} />}
+            /> */}
+            <Route
+              path="/all"
+              element={
+                <AllRecipes
+                  recipes={recipes}
+                  setSelectedRecipe={setSelectedRecipe}
+                />
+              }
+            />
+            <Route
+              path="/recipe/:slug"
+              element={
+                <RecipeDetail
+                  selectedRecipe={selectedRecipe}
+                />
+              }
+            />
+          </Routes>
+        </div>
       </div>
-    </div>
+    </Router>
   );
 }
-
 export default App;

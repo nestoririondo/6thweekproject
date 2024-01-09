@@ -1,11 +1,14 @@
-const Recent = ({ recipes, setView, setSelectedRecipe }) => {
+import { useNavigate } from "react-router-dom";
+
+const Recent = ({ recipes, setSelectedRecipe }) => {
+  const navigate = useNavigate();
   const handleViewAll = () => {
-    setView("all");
+    navigate("/all");
   };
   const handleCardClick = (recipe) => {
     setSelectedRecipe(recipe);
-    setView("recipe-detail");
-  }
+    navigate(`/recipe/${recipe.fields.slug}`);
+  };
 
   return (
     <>
@@ -18,7 +21,11 @@ const Recent = ({ recipes, setView, setSelectedRecipe }) => {
         </div>
         <div className="right">
           {recipes.map((recipe) => (
-            <div key={recipe.sys.id} className="recipe-card" onClick={()=>handleCardClick(recipe)}>
+            <div
+              key={recipe.sys.id}
+              className="recipe-card"
+              onClick={() => handleCardClick(recipe)}
+            >
               <img src={recipe.fields.images[0].fields.file.url} alt="" />
               <h3>{recipe.fields.title}</h3>
             </div>
