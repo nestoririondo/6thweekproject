@@ -29,7 +29,7 @@ a {
     margin: 0 auto;
     color: #fff;
     .logo {
-        cursor: pointer;
+      cursor: pointer;
     }
     .search-bar {
       form {
@@ -144,8 +144,25 @@ a {
       }
     }
   }
+  .load-more-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 6rem auto 2rem auto;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    &:hover {
+      background-color: #eee;
+    }
+    &:active {
+      background-color: #ddd;
+    }
+  }
 }
-
 
 .recent,
 .diet {

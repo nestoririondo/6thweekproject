@@ -1,6 +1,13 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 const AllRecipes = ({ recipes, setSelectedRecipe }) => {
+  const [amountOfRecipes, setAmountOfRecipes] = useState(6);
+
+  const loadMore = () => {
+    setAmountOfRecipes(amountOfRecipes + 6);
+  };
+
   const navigate = useNavigate();
 
   const handleCardClick = (recipe) => {
@@ -23,7 +30,7 @@ const AllRecipes = ({ recipes, setSelectedRecipe }) => {
           <span></span>
         </div>
         <div className="recipe-container">
-          {recipes.map((recipe) => (
+          {recipes.slice(0, amountOfRecipes).map((recipe) => (
             <div
               key={recipe.sys.id}
               className="recipe-card"
@@ -34,6 +41,13 @@ const AllRecipes = ({ recipes, setSelectedRecipe }) => {
             </div>
           ))}
         </div>
+        <button
+          className="load-more-btn"
+          onClick={loadMore}
+          disabled={amountOfRecipes >= recipes.length}
+        >
+          Load More
+        </button>
       </div>
     </>
   );
