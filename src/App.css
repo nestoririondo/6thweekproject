@@ -28,10 +28,22 @@ a {
     width: 100%;
     margin: 0 auto;
     color: #fff;
-    .logo {
-        cursor: pointer;
+    .logo a {
+      display: flex;
+      cursor: pointer;
+      gap: 1rem;
+      align-items: center;
+      h1 {
+        letter-spacing: 0.2rem;
+      }
+      .logo-img  {
+        width: 4rem;
+        height: 4rem;
+        margin-right: 0.5rem;
+      }
     }
     .search-bar {
+      
       form {
         margin-top: 4rem;
         display: flex;
@@ -144,8 +156,25 @@ a {
       }
     }
   }
+  .load-more-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 6rem auto 2rem auto;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    &:hover {
+      background-color: #eee;
+    }
+    &:active {
+      background-color: #ddd;
+    }
+  }
 }
-
 
 .recent,
 .diet {
@@ -208,4 +237,26 @@ a {
 
 .diet-outer {
   background-color: #ffffff;
+}
+
+footer {
+  max-width: 1200px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 4rem;
+  .go-up-btn {
+
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    &:hover {
+      background-color: #eee;
+    }
+    &:active {
+      background-color: #ddd;
+    }
+  }
 }

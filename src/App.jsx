@@ -8,6 +8,10 @@ import Diet from "./components/Diet";
 import RecipeDetail from "./components/RecipeDetail";
 import "./App.css";
 
+const goUp = () => {
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+};
+
 function App() {
   const { getRecipes } = useContentful();
 
@@ -76,6 +80,9 @@ function App() {
             />
           </Routes>
         </div>
+        <footer>
+          <button onClick={goUp} className="go-up-btn">Go Up!</button>
+        </footer>
       </div>
     </Router>
   );

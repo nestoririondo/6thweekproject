@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 const Recent = ({ recipes, setSelectedRecipe }) => {
+
   const navigate = useNavigate();
   const handleViewAll = () => {
     navigate("/all");
