@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import cookingPot from "../assets/cooking-pot.png";
 
 const SearchBar = ({ handleSubmit, searchInput, setSearchInput }) => {
   const navigate = useNavigate();
@@ -9,6 +10,7 @@ const SearchBar = ({ handleSubmit, searchInput, setSearchInput }) => {
         <div className="logo">
           <a onClick={() => navigate("/")}>
             <h1>Foodie Network</h1>
+            <img src={cookingPot} alt="logo" className='logo-img' />
           </a>
         </div>
 

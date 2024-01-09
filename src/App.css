@@ -28,10 +28,22 @@ a {
     width: 100%;
     margin: 0 auto;
     color: #fff;
-    .logo {
+    .logo a {
+      display: flex;
       cursor: pointer;
+      gap: 1rem;
+      align-items: center;
+      h1 {
+        letter-spacing: 0.2rem;
+      }
+      .logo-img  {
+        width: 4rem;
+        height: 4rem;
+        margin-right: 0.5rem;
+      }
     }
     .search-bar {
+      
       form {
         margin-top: 4rem;
         display: flex;
