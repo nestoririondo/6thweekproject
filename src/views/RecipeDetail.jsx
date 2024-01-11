@@ -5,7 +5,6 @@ import "./RecipeDetail.css";
 
 const RecipeDetail = ({ selectedRecipe }) => {
   const navigate = useNavigate();
-
   const options = {
     renderMark: {
       [MARKS.BOLD]: (text) => <strong>{text}</strong>,

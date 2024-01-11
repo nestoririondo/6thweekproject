@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
-import Filter from "./Filter";
+import Filter from "../components/Filter";
+import SearchBar from "../components/SearchBar";
 
-const AllRecipes = ({ recipes, setSelectedRecipe, setRecipes }) => {
+const AllRecipes = ({ recipes, setSelectedRecipe }) => {
   const [amountOfRecipes, setAmountOfRecipes] = useState(6);
+  const [sortedRecipes, setSortedRecipes] = useState(recipes);
 
   const loadMore = () => {
     setAmountOfRecipes(amountOfRecipes + 6);
@@ -22,6 +24,7 @@ const AllRecipes = ({ recipes, setSelectedRecipe, setRecipes }) => {
 
   return (
     <>
+      <SearchBar />
       <div className="all-recipes">
         <div className="title">
           <button className="back" onClick={handleBackClick}>
@@ -30,9 +33,12 @@ const AllRecipes = ({ recipes, setSelectedRecipe, setRecipes }) => {
           <p>All latest recipes</p>
           <span></span>
         </div>
-        <Filter recipes={recipes} setRecipes={setRecipes} />
+        <Filter
+          sortedRecipes={sortedRecipes}
+          setSortedRecipes={setSortedRecipes}
+        />
         <div className="recipe-container">
-          {recipes.slice(0, amountOfRecipes).map((recipe) => (
+          {sortedRecipes.slice(0, amountOfRecipes).map((recipe) => (
             <div
               key={recipe.sys.id}
               className="recipe-card"
@@ -46,7 +52,7 @@ const AllRecipes = ({ recipes, setSelectedRecipe, setRecipes }) => {
         <button
           className="load-more-btn"
           onClick={loadMore}
-          disabled={amountOfRecipes >= recipes.length}
+          disabled={amountOfRecipes >= sortedRecipes.length}
         >
           Load More
         </button>

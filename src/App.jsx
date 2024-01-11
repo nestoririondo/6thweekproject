@@ -1,15 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import useContentful from "./useContentful";
 import SearchBar from "./components/SearchBar";
-import Recent from "./components/Recent";
-import AllRecipes from "./components/AllRecipes";
-import Diet from "./components/Diet";
-import RecipeDetail from "./components/RecipeDetail";
+import AllRecipes from "./views/AllRecipes";
+import RecipeDetail from "./views/RecipeDetail";
+import Home from "./views/Home";
 import "./App.css";
 
 const goUp = () => {
-  window.scrollTo({ top: 0, behavior: 'smooth' });
+  window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 function App() {
@@ -21,9 +20,11 @@ function App() {
   const [selectedRecipe, setSelectedRecipe] = useState("");
 
   useEffect(() => {
-    getRecipes().then((recipes) => {
-      setRecipes(recipes);
-    });
+    getRecipes()
+      .then((recipes) => {
+        setRecipes(recipes);
+      })
+      .catch((error) => console.error(error));
     return () => {
       setRecipes([]);
     };
@@ -36,56 +37,45 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className="container">
-        <SearchBar
-          handleSubmit={handleSubmit}
-          searchInput={searchInput}
-          setSearchInput={setSearchInput}
-        />
-        <div className="content">
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <Recent
-                    recipes={recipes.slice(0, 6)}
-                    setSelectedRecipe={setSelectedRecipe}
-                  />
-                  <Diet />
-                </>
-              }
-            />
-            {/* <Route
+    <div className="container">
+      <div className="content">
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Home recipes={recipes} setSelectedRecipe={setSelectedRecipe} />
+              </>
+            }
+          />
+          {/* <Route
               path="/search"
               element={<SearchResults recipes={recipes} search={search} />}
             /> */}
-            <Route
-              path="/all"
-              element={
+          <Route
+            path="/all"
+            element={
+              <>
                 <AllRecipes
                   recipes={recipes}
                   setSelectedRecipe={setSelectedRecipe}
                   setRecipes={setRecipes}
                 />
-              }
-            />
-            <Route
-              path="/recipe/:slug"
-              element={
-                <RecipeDetail
-                  selectedRecipe={selectedRecipe}
-                />
-              }
-            />
-          </Routes>
-        </div>
-        <footer>
-          <button onClick={goUp} className="go-up-btn">Go Up!</button>
-        </footer>
+              </>
+            }
+          />
+          <Route
+            path="/recipe/:slug"
+            element={<RecipeDetail selectedRecipe={selectedRecipe} />}
+          />
+        </Routes>
       </div>
-    </Router>
+      <footer>
+        <button onClick={goUp} className="go-up-btn">
+          Go Up!
+        </button>
+      </footer>
+    </div>
   );
 }
 export default App;

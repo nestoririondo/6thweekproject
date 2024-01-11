@@ -6,7 +6,7 @@
 
 body {
   background-color: rgb(245, 245, 245);
-  font-family: 'IBM Plex Serif', serif;
+  font-family: "IBM Plex Serif", serif;
 }
 a {
   text-decoration: none;
@@ -19,7 +19,8 @@ a {
 }
 
 .outer-container {
-  background-image: url(./assets/header-left.svg), url(./assets/header-right.svg),
+  background-image: url(./assets/header-left.svg),
+    url(./assets/header-right.svg),
     linear-gradient(to right, rgb(164, 54, 54), rgb(255, 72, 72));
   background-repeat: no-repeat, no-repeat;
   background-position: left bottom, right top;
@@ -30,14 +31,11 @@ a {
     width: 100%;
     margin: 0 auto;
     color: #fff;
-    .logo a {
-      display: flex;
-      cursor: pointer;
-      gap: 1rem;
-      align-items: center;
+    .logo {
       h1 {
+        cursor: pointer;
         letter-spacing: 0.1rem;
-        font-family: 'Tangerine', cursive;
+        font-family: "Tangerine", cursive;
         font-size: 3rem;
         font-weight: 700;
       }
@@ -198,7 +196,7 @@ a {
     flex-direction: column;
     gap: 2rem;
     p {
-      font-size: 1.5rem;;
+      font-size: 1.5rem;
     }
     .view-all {
       width: 10rem;

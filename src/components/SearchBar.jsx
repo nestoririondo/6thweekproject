@@ -7,11 +7,8 @@ const SearchBar = ({ handleSubmit, searchInput, setSearchInput }) => {
     <div className="outer-container">
       <div className="inner-container">
         <div className="logo">
-          <a onClick={() => navigate("/")}>
-            <h1>Foodie Network</h1>
-          </a>
+          <h1 onClick={() => navigate("/")}>Foodie Network</h1>
         </div>
-
         <div className="search-bar">
           <form onSubmit={(e) => handleSubmit(e, searchInput)}>
             <div className="form-group1">
