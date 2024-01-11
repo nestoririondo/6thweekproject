@@ -39,7 +39,7 @@ const Recent = () => {
         </div>
         <div className="right">
           {recipes && recipes.map((recipe) => (
-            <div
+            <div onClick={() => handleCardClick(recipe.sys.id)}
               key={recipe.sys.id}
               className="recipe-card"
             >
