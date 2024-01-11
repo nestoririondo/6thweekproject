@@ -38,17 +38,14 @@ function App() {
 
   return (
     <div className="container">
-      <SearchBar
-        handleSubmit={handleSubmit}
-        searchInput={searchInput}
-        setSearchInput={setSearchInput}
-      />
       <div className="content">
         <Routes>
           <Route
             path="/"
             element={
-              <Home recipes={recipes} setSelectedRecipe={setSelectedRecipe} />
+              <>
+                <Home recipes={recipes} setSelectedRecipe={setSelectedRecipe} />
+              </>
             }
           />
           {/* <Route
@@ -58,11 +55,13 @@ function App() {
           <Route
             path="/all"
             element={
-              <AllRecipes
-                recipes={recipes}
-                setSelectedRecipe={setSelectedRecipe}
-                setRecipes={setRecipes}
-              />
+              <>
+                <AllRecipes
+                  recipes={recipes}
+                  setSelectedRecipe={setSelectedRecipe}
+                  setRecipes={setRecipes}
+                />
+              </>
             }
           />
           <Route

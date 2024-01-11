@@ -1,6 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Filter from "../components/Filter";
+import SearchBar from "../components/SearchBar";
 
 const AllRecipes = ({ recipes, setSelectedRecipe }) => {
   const [amountOfRecipes, setAmountOfRecipes] = useState(6);
@@ -23,6 +24,7 @@ const AllRecipes = ({ recipes, setSelectedRecipe }) => {
 
   return (
     <>
+      <SearchBar />
       <div className="all-recipes">
         <div className="title">
           <button className="back" onClick={handleBackClick}>
