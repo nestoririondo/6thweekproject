@@ -19,7 +19,16 @@ const useContentful = () => {
     }
   };
 
-  return { getRecipes };
+  const getRecipe = async (id) => {
+    try {
+      let entry = await client.getEntry(id);
+      return entry;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return { getRecipes, getRecipe };
 };
 
 export default useContentful;

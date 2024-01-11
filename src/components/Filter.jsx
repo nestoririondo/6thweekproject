@@ -6,8 +6,6 @@ import "./Filter.css";
 const Filter = ({ sortedRecipes, setSortedRecipes }) => {
   const [sortOrder, setSortOrder] = useState("asc");
 
-  console.log(sortedRecipes);
-
   const handleSort = () => {
     let newSortedRecipes = [...sortedRecipes]; // you can't .sort sortedRecipes directly because it's a state variable
     if (sortOrder === "asc") {

@@ -1,21 +1,37 @@
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Filter from "../components/Filter";
 import SearchBar from "../components/SearchBar";
+import useContentful from "../useContentful";
 
-const AllRecipes = ({ recipes, setSelectedRecipe }) => {
+const AllRecipes = () => {
+  const [recipes, setRecipes] = useState([]);
   const [amountOfRecipes, setAmountOfRecipes] = useState(6);
-  const [sortedRecipes, setSortedRecipes] = useState(recipes);
+  const [sortedRecipes, setSortedRecipes] = useState([]);
+
+  const { getRecipes } = useContentful();
+  const navigate = useNavigate();
+
+  const fetchRecipes = async () => {
+    const response = await getRecipes();
+    try {
+      setRecipes(response);
+      setSortedRecipes(response);
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    fetchRecipes();
+  }, []);
 
   const loadMore = () => {
     setAmountOfRecipes(amountOfRecipes + 6);
   };
 
-  const navigate = useNavigate();
-
-  const handleCardClick = (recipe) => {
-    setSelectedRecipe(recipe);
-    navigate(`/recipe/${recipe.fields.slug}`);
+  const handleCardClick = (id) => {
+    navigate(`/recipe/${id}`);
   };
 
   const handleBackClick = () => {
@@ -30,7 +46,7 @@ const AllRecipes = ({ recipes, setSelectedRecipe }) => {
           <button className="back" onClick={handleBackClick}>
             Back
           </button>
-          <p>All latest recipes</p>
+          <p>All recipes</p>
           <span></span>
         </div>
         <Filter
@@ -38,21 +54,22 @@ const AllRecipes = ({ recipes, setSelectedRecipe }) => {
           setSortedRecipes={setSortedRecipes}
         />
         <div className="recipe-container">
-          {sortedRecipes.slice(0, amountOfRecipes).map((recipe) => (
-            <div
-              key={recipe.sys.id}
-              className="recipe-card"
-              onClick={() => handleCardClick(recipe)}
-            >
-              <img src={recipe.fields.images[0].fields.file.url} alt="" />
-              <p>{recipe.fields.title}</p>
-            </div>
-          ))}
+          {sortedRecipes &&
+            sortedRecipes.slice(0, amountOfRecipes).map((recipe) => (
+              <div
+                key={recipe.sys.id}
+                className="recipe-card"
+                onClick={() => handleCardClick(recipe.sys.id)}
+              >
+                <img src={recipe.fields.images[0].fields.file.url} alt="" />
+                <p>{recipe.fields.title}</p>
+              </div>
+            ))}
         </div>
         <button
           className="load-more-btn"
           onClick={loadMore}
-          disabled={amountOfRecipes >= sortedRecipes.length}
+          disabled={amountOfRecipes >= recipes.length}
         >
           Load More
         </button>
