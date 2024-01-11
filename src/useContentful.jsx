@@ -11,6 +11,7 @@ const useContentful = () => {
     try {
       let response = await client.getEntries({
         content_type: "recipe",
+        order: "-sys.createdAt",
       });
       return response.items;
     } catch (error) {
