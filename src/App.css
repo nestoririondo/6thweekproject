@@ -5,8 +5,8 @@
 }
 
 body {
-  font-family: Helvetica, Arial, sans-serif;
   background-color: rgb(245, 245, 245);
+  font-family: 'IBM Plex Serif', serif;
 }
 a {
   text-decoration: none;
@@ -15,9 +15,11 @@ a {
 
 .container {
 }
+.content {
+}
 
 .outer-container {
-  background-image: url(./assets/stirring.svg), url(./assets/meal-2.svg),
+  background-image: url(./assets/header-left.svg), url(./assets/header-right.svg),
     linear-gradient(to right, rgb(164, 54, 54), rgb(255, 72, 72));
   background-repeat: no-repeat, no-repeat;
   background-position: left bottom, right top;
@@ -34,16 +36,18 @@ a {
       gap: 1rem;
       align-items: center;
       h1 {
-        letter-spacing: 0.2rem;
+        letter-spacing: 0.1rem;
+        font-family: 'Tangerine', cursive;
+        font-size: 3rem;
+        font-weight: 700;
       }
-      .logo-img  {
+      .logo-img {
         width: 4rem;
         height: 4rem;
         margin-right: 0.5rem;
       }
     }
     .search-bar {
-      
       form {
         margin-top: 4rem;
         display: flex;
@@ -110,7 +114,7 @@ a {
     justify-content: space-between;
     align-items: center;
     position: relative;
-    margin-bottom: 4rem;
+    margin-bottom: 2rem;
     .back {
       padding: 0.5rem 1rem;
       border-radius: 5px;
@@ -125,11 +129,12 @@ a {
         background-color: #ddd;
       }
     }
-    h2 {
+    p {
       text-align: center;
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+      font-size: 1.5rem;
     }
   }
   .recipe-container {
@@ -143,7 +148,7 @@ a {
       justify-content: space-between;
       gap: 1rem;
       align-items: center;
-      font-size: 0.8rem;
+      font-size: 1rem;
       img {
         border-radius: 5px;
         width: 100%;
@@ -192,6 +197,9 @@ a {
     display: flex;
     flex-direction: column;
     gap: 2rem;
+    p {
+      font-size: 1.5rem;;
+    }
     .view-all {
       width: 10rem;
       padding: 0.5rem 1rem;
@@ -220,7 +228,8 @@ a {
       justify-content: space-between;
       gap: 1rem;
       align-items: center;
-      font-size: 0.8rem;
+      font-size: 1rem;
+      text-align: center;
       img {
         border-radius: 5px;
         width: 100%;
@@ -245,7 +254,6 @@ footer {
   margin: 0 auto;
   padding: 4rem;
   .go-up-btn {
-
     padding: 0.5rem 1rem;
     border-radius: 5px;
     border: 1px solid #ccc;

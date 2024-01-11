@@ -67,6 +67,7 @@ function App() {
                 <AllRecipes
                   recipes={recipes}
                   setSelectedRecipe={setSelectedRecipe}
+                  setRecipes={setRecipes}
                 />
               }
             />

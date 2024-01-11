@@ -1,7 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import Filter from "./Filter";
 
-const AllRecipes = ({ recipes, setSelectedRecipe }) => {
+const AllRecipes = ({ recipes, setSelectedRecipe, setRecipes }) => {
   const [amountOfRecipes, setAmountOfRecipes] = useState(6);
 
   const loadMore = () => {
@@ -26,9 +27,10 @@ const AllRecipes = ({ recipes, setSelectedRecipe }) => {
           <button className="back" onClick={handleBackClick}>
             Back
           </button>
-          <h2>All latest recipes</h2>
+          <p>All latest recipes</p>
           <span></span>
         </div>
+        <Filter recipes={recipes} setRecipes={setRecipes} />
         <div className="recipe-container">
           {recipes.slice(0, amountOfRecipes).map((recipe) => (
             <div
@@ -37,7 +39,7 @@ const AllRecipes = ({ recipes, setSelectedRecipe }) => {
               onClick={() => handleCardClick(recipe)}
             >
               <img src={recipe.fields.images[0].fields.file.url} alt="" />
-              <h3>{recipe.fields.title}</h3>
+              <p>{recipe.fields.title}</p>
             </div>
           ))}
         </div>

@@ -15,7 +15,7 @@ const Recent = ({ recipes, setSelectedRecipe }) => {
     <>
       <div className="recent">
         <div className="left">
-          <h2>Latest recipes</h2>
+          <p>Latest recipes</p>
           <button className="view-all" onClick={handleViewAll}>
             View all
           </button>
@@ -28,7 +28,7 @@ const Recent = ({ recipes, setSelectedRecipe }) => {
               onClick={() => handleCardClick(recipe)}
             >
               <img src={recipe.fields.images[0].fields.file.url} alt="" />
-              <h3>{recipe.fields.title}</h3>
+              <p>{recipe.fields.title}</p>
             </div>
           ))}
         </div>
