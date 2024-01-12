@@ -6,18 +6,15 @@ import Footer from "./components/Footer";
 import "./App.css";
 
 function App() {
-
   return (
-    <div className="container">
-      <div className="content">
-        <Routes>
-          <Route index element={<Home />}/>
-          <Route path="/all" element={<AllRecipes />} />
-          <Route path="/recipe/:id" element={<RecipeDetail />}/>
-        </Routes>
-      </div>
+    <>
+      <Routes>
+        <Route index element={<Home />} />
+        <Route path="/all" element={<AllRecipes />} />
+        <Route path="/recipe/:id" element={<RecipeDetail />} />
+      </Routes>
       <Footer />
-    </div>
+    </>
   );
 }
 export default App;

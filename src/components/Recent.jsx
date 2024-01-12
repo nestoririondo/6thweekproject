@@ -9,9 +9,9 @@ const Recent = () => {
   const [recipes, setRecipes] = useState([]);
 
   const fetchRecipes = async () => {
-    const response = await getRecipes();
+    const response = await getRecipes(0, 6); // skip 0, get 6 recipes
     try {
-      setRecipes(response.slice(0, 6));
+      setRecipes(response);
     } catch (error) {
       console.log(error);
     }

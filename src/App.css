@@ -13,11 +13,6 @@ a {
   color: inherit;
 }
 
-.container {
-}
-.content {
-}
-
 .outer-container {
   background-image: url(./assets/header-left.svg),
     url(./assets/header-right.svg),
@@ -31,18 +26,13 @@ a {
     width: 100%;
     margin: 0 auto;
     color: #fff;
-    .logo {
+    .logo {      
       h1 {
         cursor: pointer;
         letter-spacing: 0.1rem;
         font-family: "Tangerine", cursive;
         font-size: 3rem;
         font-weight: 700;
-      }
-      .logo-img {
-        width: 4rem;
-        height: 4rem;
-        margin-right: 0.5rem;
       }
     }
     .search-bar {
