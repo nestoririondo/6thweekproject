@@ -1,12 +1,15 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import useContentful from "../useContentful";
+import { HashLoader } from "react-spinners";
+
 
 const Recent = () => {
   const navigate = useNavigate();
   const { getRecipes } = useContentful();
 
   const [recipes, setRecipes] = useState([]);
+  const [loading, setLoading] = useState(true);	
 
   const fetchRecipes = async () => {
     const response = await getRecipes(0, 6); // skip 0, get 6 recipes
@@ -30,6 +33,7 @@ const Recent = () => {
 
   return (
     <>
+    { recipes && recipes.length === 0 && <HashLoader className="loading" color="#a43636" />}
       <div className="recent">
         <div className="left">
           <p>Latest recipes</p>
