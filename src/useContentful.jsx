@@ -7,11 +7,13 @@ const useContentful = () => {
     host: "preview.contentful.com",
   });
 
-  const getRecipes = async () => {
+  const getRecipes = async (skip = 0, limit = 1000) => {
     try {
       let response = await client.getEntries({
         content_type: "recipe",
         order: "-sys.createdAt",
+        skip: skip,
+        limit: limit,
       });
       return response.items;
     } catch (error) {

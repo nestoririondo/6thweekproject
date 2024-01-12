@@ -34,11 +34,19 @@
     display: flex;
     flex-wrap: wrap;
     gap: 4rem;
-    img {
+    .left {
       flex: 1 0 300px;
-      width: 100%;
-      object-fit: contain;
-      height: auto;
+      .icons {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        align-items: center;
+      }
+      img {
+        width: 100%;
+        object-fit: contain;
+        height: auto;
+      }
     }
     .ingredients {
       flex: 1 0 300px;
@@ -60,6 +68,7 @@
         }
       }
     }
+
     .instructions {
       line-height: 2;
       text-justify: distribute-all-lines;

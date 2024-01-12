@@ -4,6 +4,8 @@ import { documentToReactComponents } from "@contentful/rich-text-react-renderer"
 import "./RecipeDetail.css";
 import useContentful from "../useContentful";
 import { useState, useEffect } from "react";
+import { LuChefHat } from "react-icons/lu";
+import { IoMdTime } from "react-icons/io";
 
 const RecipeDetail = () => {
   const navigate = useNavigate();
@@ -21,7 +23,7 @@ const RecipeDetail = () => {
 
   const { id } = useParams();
   const { getRecipe } = useContentful();
-  
+
   const handleBackClick = () => {
     navigate(-1);
   };
@@ -49,7 +51,15 @@ const RecipeDetail = () => {
         <span></span>
       </div>
       <div className="recipe-container">
-        <img src={selectedRecipe.fields.images[0].fields.file.url} />
+        <div className="left">
+          <div className="icons">
+            <IoMdTime className="time-icon" />
+            <p className="time">{selectedRecipe.fields.cookingTime} min</p>
+            <LuChefHat className="chef-icon" />
+            <p className="chef-name">{selectedRecipe.fields.difficulty}</p>
+          </div>
+          <img src={selectedRecipe.fields.images[0].fields.file.url} />
+        </div>
         <div className="ingredients">
           {documentToReactComponents(
             selectedRecipe.fields.ingredientList,
