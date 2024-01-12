@@ -6,6 +6,8 @@ import useContentful from "../useContentful";
 import { useState, useEffect } from "react";
 import { LuChefHat } from "react-icons/lu";
 import { IoMdTime } from "react-icons/io";
+import { HashLoader } from "react-spinners";
+
 
 const RecipeDetail = () => {
   const navigate = useNavigate();
@@ -51,20 +53,20 @@ const RecipeDetail = () => {
         <span></span>
       </div>
       <div className="recipe-container">
-        <div className="left">
-          <div className="icons">
-            <IoMdTime className="time-icon" />
-            <p className="time">{selectedRecipe.fields.cookingTime} min</p>
-            <LuChefHat className="chef-icon" />
-            <p className="chef-name">{selectedRecipe.fields.difficulty}</p>
-          </div>
-          <img src={selectedRecipe.fields.images[0].fields.file.url} />
+        <div className="icons">
+          <IoMdTime className="time-icon" />
+          <p className="time">{selectedRecipe.fields.cookingTime} min</p>
+          <LuChefHat className="chef-icon" />
+          <p className="chef-name">{selectedRecipe.fields.difficulty}</p>
         </div>
-        <div className="ingredients">
-          {documentToReactComponents(
-            selectedRecipe.fields.ingredientList,
-            options
-          )}
+        <div className="img-ing">
+          <img src={selectedRecipe.fields.images[0].fields.file.url} />
+          <div className="ingredients">
+            {documentToReactComponents(
+              selectedRecipe.fields.ingredientList,
+              options
+            )}
+          </div>
         </div>
         <div className="instructions">
           {documentToReactComponents(
@@ -75,7 +77,7 @@ const RecipeDetail = () => {
       </div>
     </div>
   ) : (
-    <div>Loading...</div>
+    <HashLoader className="loading" color="#a43636" />
   );
 };
 

@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Filter from "../components/Filter";
-import SearchBar from "../components/SearchBar";
 import useContentful from "../useContentful";
+import { HashLoader } from "react-spinners";
 
 const AllRecipes = () => {
   const [recipes, setRecipes] = useState([]);
@@ -16,8 +16,8 @@ const AllRecipes = () => {
   const fetchRecipes = async () => {
     const response = await getRecipes(amountSkipRecipes, 3);
     try {
-      setRecipes(prevRecipes => [...prevRecipes, ...response]);
-      setSortedRecipes(prevRecipes => [...prevRecipes, ...response]);
+      setRecipes((prevRecipes) => [...prevRecipes, ...response]);
+      setSortedRecipes((prevRecipes) => [...prevRecipes, ...response]);
     } catch (error) {
       console.log(error);
     } finally {
@@ -29,7 +29,7 @@ const AllRecipes = () => {
     fetchRecipes();
   }, [amountSkipRecipes]);
 
-  const loadMore = () => { 
+  const loadMore = () => {
     setAmountSkipRecipes(amountSkipRecipes + 3);
   };
 
@@ -42,12 +42,11 @@ const AllRecipes = () => {
   };
 
   if (loading) {
-    return <div className="loading">Loading...</div>;
+    return <HashLoader className="loading" color="#a43636" />;
   }
 
   return (
     <>
-      <SearchBar />
       <div className="all-recipes">
         <div className="title">
           <button className="back" onClick={handleBackClick}>
@@ -68,7 +67,10 @@ const AllRecipes = () => {
                 className="recipe-card"
                 onClick={() => handleCardClick(recipe.sys.id)}
               >
-                <img src={recipe.fields.images[0].fields.file.url} alt={recipe.fields.title} />
+                <img
+                  src={recipe.fields.images[0].fields.file.url}
+                  alt={recipe.fields.title}
+                />
                 <p>{recipe.fields.title}</p>
               </div>
             ))}
