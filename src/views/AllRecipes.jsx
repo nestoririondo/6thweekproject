@@ -14,7 +14,7 @@ const AllRecipes = () => {
   const navigate = useNavigate();
 
   const fetchRecipes = async () => {
-    const response = await getRecipes(amountSkipRecipes, 3);
+    const response = await getRecipes(amountSkipRecipes, 6);
     try {
       setRecipes((prevRecipes) => [...prevRecipes, ...response]);
       setSortedRecipes((prevRecipes) => [...prevRecipes, ...response]);
@@ -30,7 +30,7 @@ const AllRecipes = () => {
   }, [amountSkipRecipes]);
 
   const loadMore = () => {
-    setAmountSkipRecipes(amountSkipRecipes + 3);
+    setAmountSkipRecipes(amountSkipRecipes + 6);
   };
 
   const handleCardClick = (id) => {
@@ -58,6 +58,7 @@ const AllRecipes = () => {
         <Filter
           sortedRecipes={sortedRecipes}
           setSortedRecipes={setSortedRecipes}
+          recipes={recipes}
         />
         <div className="recipe-container">
           {sortedRecipes &&
@@ -67,18 +68,21 @@ const AllRecipes = () => {
                 className="recipe-card"
                 onClick={() => handleCardClick(recipe.sys.id)}
               >
+                <p className="cooking-time">
+                  {recipe.fields.cookingTime} minutes
+                </p>
+
                 <img
                   src={recipe.fields.images[0].fields.file.url}
                   alt={recipe.fields.title}
                 />
-                <p>{recipe.fields.title}</p>
+                <p className="recipe-title">{recipe.fields.title}</p>
               </div>
             ))}
         </div>
         <button
           className="load-more-btn"
           onClick={loadMore}
-          // disabled={amountOfRecipes >= recipes.length}
         >
           Load More
         </button>
