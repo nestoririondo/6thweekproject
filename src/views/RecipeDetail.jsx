@@ -2,7 +2,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { BLOCKS, MARKS } from "@contentful/rich-text-types";
 import { documentToReactComponents } from "@contentful/rich-text-react-renderer";
 import "./RecipeDetail.css";
-import useContentful from "../useContentful";
+import useContentful from "../hooks/useContentful";
 import { useState, useEffect } from "react";
 import { LuChefHat } from "react-icons/lu";
 import { IoMdTime } from "react-icons/io";

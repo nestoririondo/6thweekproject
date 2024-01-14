@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import Filter from "../components/Filter";
-import useContentful from "../useContentful";
+import useContentful from "../hooks/useContentful";
 import { HashLoader } from "react-spinners";
 
 const AllRecipes = () => {
