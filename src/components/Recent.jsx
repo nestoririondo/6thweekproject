@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import useContentful from "../useContentful";
+import useContentful from "../hooks/useContentful";
 import { HashLoader } from "react-spinners";
 
 const Recent = () => {
