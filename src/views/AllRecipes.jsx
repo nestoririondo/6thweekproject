@@ -3,7 +3,9 @@ import { useState, useEffect } from "react";
 import Filter from "../components/Filter";
 import useContentful from "../useContentful";
 import { HashLoader } from "react-spinners";
+import SearchBar from "../components/SearchBar";
 
+<SearchBar />
 const AllRecipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [amountSkipRecipes, setAmountSkipRecipes] = useState(0);

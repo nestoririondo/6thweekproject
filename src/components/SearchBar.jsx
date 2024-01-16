@@ -3,6 +3,20 @@ import { useNavigate } from "react-router-dom";
 const SearchBar = ({ handleSubmit, searchInput, setSearchInput }) => {
   const navigate = useNavigate();
 
+  function SearchBar() {
+    const history = useHistory();
+    const [inputValue, setInputValue] = useState('');
+  
+    const handleChange = (event) => {
+      setInputValue(event.target.value);
+    };
+
+    const handleSubmit = (event) => {
+      event.preventDefault();
+      history.push(`/search/${inputValue}`);
+    };
+    
+
   return (
     <div className="outer-container">
       <div className="inner-container">
@@ -36,5 +50,7 @@ const SearchBar = ({ handleSubmit, searchInput, setSearchInput }) => {
     </div>
   );
 };
+
+
 
 export default SearchBar;

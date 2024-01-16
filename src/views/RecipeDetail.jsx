@@ -7,6 +7,9 @@ import { useState, useEffect } from "react";
 import { LuChefHat } from "react-icons/lu";
 import { IoMdTime } from "react-icons/io";
 import { HashLoader } from "react-spinners";
+import SearchBar from "../components/SearchBar";
+
+<SearchBar />
 
 
 const RecipeDetail = () => {
