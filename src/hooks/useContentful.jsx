@@ -15,8 +15,6 @@ const useContentful = () => {
         order: "-sys.createdAt",
         skip: skip,
         limit: limit,
-
-
       });
       return response.items;
     } catch (error) {
@@ -37,7 +35,7 @@ const useContentful = () => {
     try {
       let response = await client.getEntries({
         content_type: "recipe",
-        'fields.title[match]': name,
+        'fields.categories[match]': name,
         order: "-sys.createdAt",
       });
       return response.items;
@@ -46,7 +44,7 @@ const useContentful = () => {
     }
   };
 
-  return { getRecipes, getRecipe, getRecipesByName};
+  return { getRecipes, getRecipe, getRecipesByName };
 };
 
 export default useContentful;

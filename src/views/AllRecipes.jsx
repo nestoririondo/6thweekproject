@@ -5,7 +5,6 @@ import useContentful from "../hooks/useContentful";
 import { HashLoader } from "react-spinners";
 import SearchBar from "../components/SearchBar";
 
-<SearchBar />
 const AllRecipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [amountSkipRecipes, setAmountSkipRecipes] = useState(0);
@@ -43,12 +42,10 @@ const AllRecipes = () => {
     navigate(-1);
   };
 
-  if (loading) {
-    return <HashLoader className="loading" color="#a43636" />;
-  }
-
   return (
     <>
+      <SearchBar />
+      {loading ? <HashLoader className="loading" color="#a43636" /> : null}
       <div className="all-recipes">
         <div className="title">
           <button className="back" onClick={handleBackClick}>
@@ -82,10 +79,7 @@ const AllRecipes = () => {
               </div>
             ))}
         </div>
-        <button
-          className="load-more-btn"
-          onClick={loadMore}
-        >
+        <button className="load-more-btn" onClick={loadMore}>
           Load More
         </button>
       </div>

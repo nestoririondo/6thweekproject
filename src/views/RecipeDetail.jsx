@@ -9,9 +9,6 @@ import { IoMdTime } from "react-icons/io";
 import { HashLoader } from "react-spinners";
 import SearchBar from "../components/SearchBar";
 
-<SearchBar />
-
-
 const RecipeDetail = () => {
   const navigate = useNavigate();
   const options = {
@@ -46,41 +43,46 @@ const RecipeDetail = () => {
     fetchRecipe(id);
   }, []);
 
-  return selectedRecipe && selectedRecipe.fields ? (
-    <div className="recipe-detail">
-      <div className="title">
-        <button className="back" onClick={handleBackClick}>
-          Back
-        </button>
-        <h2 className="recipe-title">{selectedRecipe.fields.title}</h2>
-        <span></span>
-      </div>
-      <div className="recipe-container">
-        <div className="icons">
-          <IoMdTime className="time-icon" />
-          <p className="time">{selectedRecipe.fields.cookingTime} min</p>
-          <LuChefHat className="chef-icon" />
-          <p className="chef-name">{selectedRecipe.fields.difficulty}</p>
-        </div>
-        <div className="img-ing">
-          <img src={selectedRecipe.fields.images[0].fields.file.url} />
-          <div className="ingredients">
-            {documentToReactComponents(
-              selectedRecipe.fields.ingredientList,
-              options
-            )}
+  return (
+    <>
+      <SearchBar />
+      {selectedRecipe && selectedRecipe.fields ? (
+        <div className="recipe-detail">
+          <div className="title">
+            <button className="back" onClick={handleBackClick}>
+              Back
+            </button>
+            <h2 className="recipe-title">{selectedRecipe.fields.title}</h2>
+            <span></span>
+          </div>
+          <div className="recipe-container">
+            <div className="icons">
+              <IoMdTime className="time-icon" />
+              <p className="time">{selectedRecipe.fields.cookingTime} min</p>
+              <LuChefHat className="chef-icon" />
+              <p className="chef-name">{selectedRecipe.fields.difficulty}</p>
+            </div>
+            <div className="img-ing">
+              <img src={selectedRecipe.fields.images[0].fields.file.url} />
+              <div className="ingredients">
+                {documentToReactComponents(
+                  selectedRecipe.fields.ingredientList,
+                  options
+                )}
+              </div>
+            </div>
+            <div className="instructions">
+              {documentToReactComponents(
+                selectedRecipe.fields.preparationInstructions,
+                options
+              )}
+            </div>
           </div>
         </div>
-        <div className="instructions">
-          {documentToReactComponents(
-            selectedRecipe.fields.preparationInstructions,
-            options
-          )}
-        </div>
-      </div>
-    </div>
-  ) : (
-    <HashLoader className="loading" color="#a43636" />
+      ) : (
+        <HashLoader className="loading" color="#a43636" />
+      )}
+    </>
   );
 };
 

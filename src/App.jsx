@@ -3,7 +3,7 @@ import AllRecipes from "./views/AllRecipes";
 import RecipeDetail from "./views/RecipeDetail";
 import Home from "./views/Home";
 import Footer from "./components/Footer";
-import SearchResults from './SearchResults';
+import SearchResults from './views/SearchResults';
 import "./App.css";
 
 function App() {
