@@ -35,7 +35,7 @@ const useContentful = () => {
     try {
       let response = await client.getEntries({
         content_type: "recipe",
-        'fields.categories[match]': name,
+        'fields.keywords[match]': name,
         order: "-sys.createdAt",
       });
       return response.items;

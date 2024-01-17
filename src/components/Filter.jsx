@@ -36,11 +36,12 @@ const Filter = ({ recipes, sortedRecipes, setSortedRecipes }) => {
 
   const handleFilter = (course) => {
     let newSortedRecipes = [...recipes];
+    console.log(newSortedRecipes)
     if (course === "all") {
       setSortedRecipes(newSortedRecipes);
     } else {
       newSortedRecipes = newSortedRecipes.filter((recipe) =>
-        recipe.fields.categories.includes(course)
+        recipe.fields.keywords.includes(course)
       );
       setSortedRecipes(newSortedRecipes);
     }
