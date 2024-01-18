@@ -83,6 +83,7 @@
   .recipe-detail {
     padding: 2rem;
     .recipe-container {
+      padding: 0;
       .img-ing {
         flex-direction: column;
         .ingredients {

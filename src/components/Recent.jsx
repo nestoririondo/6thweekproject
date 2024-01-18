@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import useContentful from "../hooks/useContentful";
 import { HashLoader } from "react-spinners";
 
-
 const Recent = () => {
   const navigate = useNavigate();
   const { getRecipes } = useContentful();

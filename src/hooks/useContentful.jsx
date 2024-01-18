@@ -1,5 +1,6 @@
 import { createClient } from "contentful";
 
+
 const useContentful = () => {
   const client = createClient({
     space: import.meta.env.VITE_REACT_APP_CONTENTFUL_SPACE_ID,
@@ -30,7 +31,20 @@ const useContentful = () => {
     }
   };
 
-  return { getRecipes, getRecipe };
+  const getRecipesByName = async (name) => {
+    try {
+      let response = await client.getEntries({
+        content_type: "recipe",
+        'fields.keywords[match]': name,
+        order: "-sys.createdAt",
+      });
+      return response.items;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  return { getRecipes, getRecipe, getRecipesByName };
 };
 
 export default useContentful;
