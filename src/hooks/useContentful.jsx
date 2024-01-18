@@ -8,11 +8,12 @@ const useContentful = () => {
     host: "preview.contentful.com",
   });
 
-  const getRecipes = async (skip = 0, limit = 1000) => {
+  const getRecipes = async (skip = 0, limit = 1000, name = "") => {
     try {
       let response = await client.getEntries({
         content_type: "recipe",
         order: "-sys.createdAt",
+        'fields.keywords[match]': name,
         skip: skip,
         limit: limit,
       });
@@ -31,20 +32,7 @@ const useContentful = () => {
     }
   };
 
-  const getRecipesByName = async (name) => {
-    try {
-      let response = await client.getEntries({
-        content_type: "recipe",
-        'fields.keywords[match]': name,
-        order: "-sys.createdAt",
-      });
-      return response.items;
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  return { getRecipes, getRecipe, getRecipesByName };
+  return { getRecipes, getRecipe };
 };
 
 export default useContentful;
