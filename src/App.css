@@ -22,12 +22,17 @@ a {
 
   .inner-container {
     padding: 4rem;
-    padding-top: 3rem;
+    padding-top: 5rem;
     max-width: 1200px;
     width: 100%;
     margin: 0 auto;
     color: #fff;
+    display: flex;
+    align-items: flex-end;
+    gap: 2rem;
+    flex-wrap: wrap;
     .logo {
+      flex: 0 0 32%;
       h1 {
         cursor: pointer;
         letter-spacing: 0.1rem;
@@ -37,8 +42,8 @@ a {
       }
     }
     .search-bar {
+      flex: 1;
       form {
-        margin-top: 4rem;
         display: flex;
         align-items: flex-end;
         flex-wrap: wrap;
@@ -98,6 +103,7 @@ a {
   width: 100%;
   margin: 0 auto;
   padding: 4rem;
+  min-height: calc(100vh-2rem);
   .title {
     display: flex;
     justify-content: space-between;
@@ -135,8 +141,9 @@ a {
       position: relative;
       height: 0;
       padding-bottom: 75%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
       img {
-        border-radius: 5px;
         width: 100%;
         object-fit: cover;
       }
@@ -160,12 +167,13 @@ a {
         color: #fff;
         background-color: rgba(0, 0, 0, 0.4);
         padding: 0.5rem;
-        border-top-right-radius: 5px;
+        /* border-top-right-radius: 5px; */
         font-size: 0.75rem;
       }
       &:hover {
         cursor: pointer;
         transform: scale(1.02);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
       }
     }
   }
@@ -211,7 +219,7 @@ a {
     .view-all {
       width: 10rem;
       padding: 0.5rem 1rem;
-      border-radius: 5px;
+      border-: 5px;
       border: 1px solid #ccc;
       background-color: #fff;
       font-size: 1rem;
@@ -234,6 +242,8 @@ a {
       position: relative;
       height: 0;
       padding-bottom: 75%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      border-radius: 5px;
       img {
         border-radius: 5px;
         width: 100%;
@@ -255,6 +265,7 @@ a {
       &:hover {
         cursor: pointer;
         transform: scale(1.02);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.5);
       }
     }
   }
@@ -267,28 +278,9 @@ a {
   left: 50%;
   margin-top: 4rem;
 }
-footer {
-  max-width: 1200px;
-  width: 100%;
-  margin: 0 auto;
-  padding: 4rem;
-  .go-up-btn {
-    color: white;
-    padding: 0.5rem 1rem;
-    border-radius: 5px;
-    background-color: #a43636;
-    border: none;
-    font-size: 1rem;
-    cursor: pointer;
-    &:hover {
-      background-color: rgb(141, 47, 47);
-    }
-    &:active {
-      background-color: rgb(126, 41, 41);
-    }
-  }
+.home {
+  min-height: calc(100vh-2rem);
 }
-
 /* media queries */
 @media screen and (max-width: 768px) {
   .outer-container {
@@ -299,5 +291,9 @@ footer {
   .recent,
   .all-recipes {
     padding: 2rem;
+
+  }
+  .recipe-container {
+    padding: 0rem;
   }
 }

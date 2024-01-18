@@ -8,6 +8,7 @@ const SearchBar = ({ searchInput }) => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
+    if (inputValue === "") return;
     navigate(`/search/${inputValue}`);
   };
 
@@ -19,15 +20,6 @@ const SearchBar = ({ searchInput }) => {
         </div>
         <div className="search-bar">
           <form onSubmit={(e) => handleSubmit(e, searchInput)}>
-            <div className="form-group1">
-              <label htmlFor="course">Course </label>
-              <select name="course">
-                <option value="all">All</option>
-                <option value="appetizer">Starter</option>
-                <option value="main course">Main Course</option>
-                <option value="dessert">Dessert</option>
-              </select>
-            </div>
             <div className="form-group2">
               <label htmlFor="recipes">Recipes </label>
               <input

@@ -1,13 +1,13 @@
 import Recent from "../components/Recent";
-import Diet from "../components/Diet";
 import SearchBar from "../components/SearchBar";
 
 const Home = () => {
   return (
     <>
-      <SearchBar />
-      <Recent />
-      <Diet />
+      <div className="home">
+        <SearchBar />
+        <Recent />
+      </div>
     </>
   );
 };

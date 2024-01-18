@@ -27,6 +27,10 @@ function SearchResults() {
     fetchRecipes(name, setRecipes, setSortedRecipes);
   }, [name]);
 
+  const handleCardClick = (id) => {
+    navigate(`/recipe/${id}`);
+  };
+  
   return (
     <>
       <SearchBar />
