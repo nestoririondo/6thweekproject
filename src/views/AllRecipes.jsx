@@ -5,6 +5,18 @@ import useContentful from "../hooks/useContentful";
 import { HashLoader } from "react-spinners";
 import SearchBar from "../components/SearchBar";
 
+const fetchRecipes = async (getRecipes, setRecipes, setLoading, amountSkipRecipes, setSortedRecipes) => {
+  const response = await getRecipes(amountSkipRecipes, 6);
+  try {
+    setRecipes((prevRecipes) => [...prevRecipes, ...response]);
+    setSortedRecipes((prevRecipes) => [...prevRecipes, ...response]);
+  } catch (error) {
+    console.log(error);
+  } finally {
+    setLoading(false);
+  }
+};
+
 const AllRecipes = () => {
   const [recipes, setRecipes] = useState([]);
   const [amountSkipRecipes, setAmountSkipRecipes] = useState(0);
@@ -14,20 +26,8 @@ const AllRecipes = () => {
   const { getRecipes } = useContentful();
   const navigate = useNavigate();
 
-  const fetchRecipes = async () => {
-    const response = await getRecipes(amountSkipRecipes, 6);
-    try {
-      setRecipes((prevRecipes) => [...prevRecipes, ...response]);
-      setSortedRecipes((prevRecipes) => [...prevRecipes, ...response]);
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
-    fetchRecipes();
+    fetchRecipes(getRecipes, setRecipes, setLoading, amountSkipRecipes, setSortedRecipes);
   }, [amountSkipRecipes]);
 
   const loadMore = () => {

@@ -5,11 +5,11 @@ import SearchBar from "../components/SearchBar";
 import Filter from "../components/Filter";
 import "./SearchResults.css";
 
-const { getRecipesByName } = useContentful();
+const { getRecipes } = useContentful();
 
 const fetchRecipes = async (name, setSortedRecipes, setRecipes) => {
   try {
-    const response = await getRecipesByName(name);
+    const response = await getRecipes(0, 1000, name);
     setRecipes(response);
     setSortedRecipes(response);
   } catch (error) {
@@ -32,7 +32,7 @@ function SearchResults() {
   };
   
   return (
-    <>
+    <div className="search-all">
       <SearchBar />
       <div className="search">
         <div className="title">
@@ -76,7 +76,7 @@ function SearchResults() {
             ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
